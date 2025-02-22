@@ -17,7 +17,7 @@ class _SignInScreenState extends State<SignInScreen>{
         color: Colors.greenAccent,
         width: screenWidth,
         height: screenHeight,
-        padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+        padding: EdgeInsets.fromLTRB(20, 40, 20, 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
