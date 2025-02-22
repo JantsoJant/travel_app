@@ -71,6 +71,8 @@ flutter:
 
      - family: SUDisplay
        fonts:
+         - asset: assets/fonts/sf-ui-display-cdnfonts/sf-ui-display-light-58646b33e0551.otf
+           weight: 300
          - asset: assets/fonts/sf-ui-display-medium.otf
            weight: 400
          - asset: assets/fonts/sf-ui-display-cdnfonts/sf-ui-display-black-58646a6b80d5a.otf
