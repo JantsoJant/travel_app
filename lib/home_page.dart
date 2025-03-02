@@ -5,24 +5,17 @@ class HomePageScreen extends StatefulWidget{
   const HomePageScreen({super.key});
 
   @override
-  State<HomePageScreen> createState()=> _HomePageScreen();
+  State<HomePageScreen> createState()=> _HomePageState();
 }
 
-class _HomePageScreen extends State<HomePageScreen>{
-  final List<Map<String, dynamic>> categories = [
-    {"name": "Friendship", "img": "images/friendship.png",},
-    {"name": "Currency USD", "img": "images/currency.png",},
-    {"name": "Temperature", "img": "images/temperature.png",},
-    {"name": "BMI", "img": "images/bmi.png",},
-    // {"name": "Length", "img": "images/length.png",},
-    // {"name": "Temperature", "img": "images/temperature.png",},
-    // {"name": "Area", "img": "images/area.png",},
-    // {"name": "Volume", "img": "images/volume.png",},
-    // {"name": "Weight", "img": "images/weight.png",},
-    // {"name": "Time Belgium", "img": "images/time.png",},
-    // {"name": "Age", "img": "images/age.png",},
-    // {"name": "Currency Pound", "img": "images/currency.png",},
-    // {"name": "Time", "img": "images/time.png",},
+class _HomePageState extends State<HomePageScreen>{
+  final List<Map<String, dynamic>> items = [
+    {"name": "Niladri Reservoir","address": "Tekergat, Sunamgnj", "img": "assets/images/favt-1.png",},
+    {"name": "Casa Las Tirtugas","address": "Av Damero, Maxico", "img": "assets/images/favt-2.png",},
+    {"name": "Aonang Villa Resort","address": "Bastola, Islampur", "img": "assets/images/favt-3.png",},
+    {"name": "Rangauti Resort","address": "Sylhet, Airport Road", "img": "assets/images/favt-4.png",},
+    {"name": "Kachura Resort","address": "Vellima, Island", "img": "assets/images/favt-5.png",},
+    {"name": "Shakardu Resort","address": "Shakartu, Pakistan", "img": "assets/images/favt-6.png",},
   ];
   @override
   Widget build(BuildContext context) {
@@ -32,100 +25,390 @@ class _HomePageScreen extends State<HomePageScreen>{
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: AppBar(
-            backgroundColor: Colors.blue,
-            elevation: 0,
-            leading: Container(
-              margin: EdgeInsets.all(8), // Adjusts spacing
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300, // Background color
-                shape: BoxShape.circle, // Circular shape
-              ),
-              child: IconButton(
-                icon: Icon(Icons.chevron_left,
-                    color: Color(0xFF1B1E28),
-                    size: 20
-                ), // Adjust icon size
-                onPressed: () {},
+          preferredSize: Size.fromHeight(70),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+            child: AppBar(
+              primary: true,
+              backgroundColor: Colors.greenAccent,
+              elevation: 0,
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: 44,
+                    padding: EdgeInsets.fromLTRB(5,5,10,5),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF7F7F9),
+                      borderRadius: BorderRadius.circular(22),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFFDFE6),
+                            shape: BoxShape.circle,
+                          ),
+                          child: SvgPicture.asset("assets/images/home_icon.svg",width: 40,),
+                        ),
+                        SizedBox(width: 2,),
+                        Text(
+                          "Lenorado",
+                          style: TextStyle(
+                            fontFamily: "SUDisplay",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            height: 16/14,
+                            letterSpacing: 0
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF7F7F9).withOpacity(1),
+                      shape: BoxShape.circle, // Circular shape
+                    ),
+                    child: IconButton(
+                      icon: Icon(Icons.notifications_none,
+                          color: Color(0xFF1B1E28),
+                          size: 22
+                      ), // Adjust icon size
+                      onPressed: () {},
+                    ),
+                  )
+                ],
               ),
             ),
-            title: Text(
-              "Favourite Places",
-              style: TextStyle(
-                fontFamily: "SUDisplay",
-                fontWeight: FontWeight.w400,
-                fontSize: 18,
-                height: 22/18,
-                letterSpacing: 0
-              ),
-            ),
-            centerTitle: true,
-          ),
-        ),
+          )
       ),
       body: Container(
-        color: Colors.greenAccent,
         width: screenWidth,
         height: screenHeight,
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        color: Colors.blue,
+        padding: EdgeInsets.fromLTRB(20,10,0,10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Favourite Places",
-              style: TextStyle(
-                fontFamily: "SUDisplay",
-                fontWeight: FontWeight.w400,
-                fontSize: 20,
-                height: 28 / 20,
-                letterSpacing: 0,
-              ),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: GridView.builder(
-                itemCount: categories.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, // 3 boxes per row
-                  crossAxisSpacing: 15,
-                  mainAxisSpacing: 20,
-                  childAspectRatio: 0.8,
+            Stack(
+              children:[
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: "Explore the\n",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 38,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "SUDisplay",
+                          height: 50 / 38,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "Beautiful ",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 38,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: "SUDisplay",
+                          height: 50 / 38,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "world!",
+                        style: TextStyle(
+                          color: Color(0xFFFF7029),
+                          fontSize: 38,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: "SUDisplay",
+                          height: 50 / 38,
+                        ),
+                      ),
+                    ],
+                  ),
+                  textAlign: TextAlign.start,
                 ),
-                itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: Colors.greenAccent,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 4,
-                          offset: const Offset(2, 2),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // Image.asset(categories[index]['img'], width: 40, height: 40),
-                        const SizedBox(height: 8),
-                        Text(
-                          categories[index]['name'],
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+                Positioned(
+                    top: screenHeight*0.12,
+                    left: screenWidth*0.47,
+                    child: SvgPicture.asset("assets/images/vector-2.svg")
+                )
+              ]
             ),
+            SizedBox(height: 20,),
+            Expanded(
+                child: Container(
+                  color: Colors.yellow,
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 25),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(right: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Best Destination",
+                              style: TextStyle(
+                                fontFamily: "SUDisplay",
+                                fontWeight: FontWeight.w700,
+                                fontSize: 20,
+                                height: 28/20,
+                                letterSpacing: 0,
+                                color: Color(0xFF1B1E28)
+                              ),
+                            ),
+                            Text(
+                              "View All",
+                              style: TextStyle(
+                                fontFamily: "SUDisplay",
+                                fontWeight: FontWeight.w300,
+                                fontSize: 14,
+                                height: 16/14,
+                                letterSpacing: 0,
+                                color: Color(0xFF0D6EFD)
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 370,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: items.length,
+                            itemBuilder: (context, index){
+                              return Padding(
+                                padding: const EdgeInsets.fromLTRB(0,0,10,0),
+                                child: Container(
+                                  width: 250,
+                                  padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(24),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0xFFB4BCC9).withOpacity(0.6),
+                                        blurStyle: BlurStyle.normal,
+                                        blurRadius: 8,
+                                        offset: const Offset(0, 6),
+                                        spreadRadius: 0,
+                                      ),
+                                    ],
+                                  ),
+                                  child: Container(
+                                    color: Colors.white,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: screenWidth,
+                                          color: Colors.white,
+                                          child: Stack(
+                                              children:[
+                                                Image.asset(items[index]['img'],width: screenWidth,fit: BoxFit.fill,height: 280,),
+                                                Positioned(
+                                                  right: 0,
+                                                  left: screenWidth*0.42,
+                                                  top: screenHeight*0.035,
+                                                  child: Container(
+                                                    width: 30,
+                                                    height: 30,
+                                                    decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                              color: Colors.white.withOpacity(0.5),
+                                                              blurRadius: 30,
+                                                              blurStyle: BlurStyle.solid
+                                                          )
+                                                        ]
+                                                    ),
+                                                    child: Icon(
+                                                      Icons.bookmark_border_outlined,
+                                                      size: 20,
+                                                      color: Color(0xFFFFFFFF),
+                                                    ),
+                                                  ),
+                                                )
+                                              ]
+                                          ),
+                                        ),
+                                        Container(
+                                          color: Colors.yellow,
+                                          height: 60,
+                                          padding: EdgeInsets.symmetric(vertical: 5),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    items[index]['name'],
+                                                    textAlign: TextAlign.start,
+                                                    style: const TextStyle(
+                                                      fontSize: 14,
+                                                      fontFamily: "SUDisplay",
+                                                      fontWeight: FontWeight.w700,
+                                                      height: 16/14,
+                                                      letterSpacing: 0.5,
+                                                      color: Color(0xFF1B1E28),
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Icon(Icons.star,color: Color(0xFFFFD336),size: 16,),
+                                                      Text(
+                                                        "4.7",
+                                                        style: TextStyle(
+                                                            fontFamily: "SUDisplay",
+                                                            fontSize: 13,
+                                                            fontWeight: FontWeight.w400,
+                                                            height: 16/13,
+                                                            color: Color(0xFF1B1E28),
+                                                            letterSpacing: 0.3
+                                                        ),
+                                                      )
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                              Row(
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Icon(Icons.location_on_outlined,color: Color(0xFF7D848D),size: 20),
+                                                      Text(
+                                                        items[index]['address'],
+                                                        textAlign: TextAlign.start,
+                                                        style: TextStyle(
+                                                            fontSize: 12,
+                                                            fontFamily: "SUDisplay",
+                                                            fontWeight: FontWeight.w300,
+                                                            height: 16/12,
+                                                            letterSpacing: 0.3,
+                                                            color: Color(0xFF7D848D)
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 70,
+                                                        child: Stack(
+                                                          children: [
+                                                            Container(
+                                                              width: 24, // Fixed image width
+                                                              height: 24, // Fixed image height
+                                                              decoration: BoxDecoration(
+                                                                color: Colors.redAccent,
+                                                                shape: BoxShape.circle,
+                                                                image: DecorationImage(
+                                                                  image: AssetImage("assets/images/avatar-1.png"), // Image from assets
+                                                                  fit: BoxFit.cover, // Covers the area
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Positioned(
+                                                                top: 0,
+                                                                left: 15,
+                                                                bottom: 0,
+                                                                child: Container(
+                                                                  width: 24, // Fixed image width
+                                                                  height: 24, // Fixed image height
+                                                                  decoration: BoxDecoration(
+                                                                    color: Colors.white,
+                                                                    shape: BoxShape.circle,
+                                                                    image: DecorationImage(
+                                                                      image: AssetImage("assets/images/avatar-2.png"), // Image from assets
+                                                                      fit: BoxFit.cover, // Covers the area
+                                                                    ),
+                                                                  ),
+                                                                  // child: Image(image: AssetImage("assets/images/pop-1.png"))
+                                                                )
+                                                            ),
+                                                            Positioned(
+                                                                top: 0,
+                                                                bottom: 0,
+                                                                left: 30,
+                                                                child: Container(
+                                                                  width: 24, // Fixed image width
+                                                                  height: 24, // Fixed image height
+                                                                  decoration: BoxDecoration(
+                                                                    // color: Colors.red,
+                                                                    shape: BoxShape.circle,
+                                                                    image: DecorationImage(
+                                                                      image: AssetImage("assets/images/avatar-3.png"), // Image from assets
+                                                                      fit: BoxFit.cover, // Covers the area
+                                                                    ),
+                                                                  ),
+                                                                )
+                                                            ),
+                                                            Positioned(
+                                                                top: 0,
+                                                                bottom: 0,
+                                                                left: 45,
+                                                                child: Container(
+                                                                  width: 24, // Fixed image width
+                                                                  height: 24, // Fixed image height
+                                                                  decoration: BoxDecoration(
+                                                                    // color: Colors.red,
+                                                                    shape: BoxShape.circle,
+                                                                    image: DecorationImage(
+                                                                      image: AssetImage("assets/images/avatar-3.png"), // Image from assets
+                                                                      fit: BoxFit.cover, // Covers the area
+                                                                    ),
+                                                                  ),
+                                                                )
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  )
+
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }),
+                      )
+                    ],
+                  ),
+                )
+            )
           ],
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        notchMargin: 30,
+        padding: EdgeInsets.symmetric(vertical: 5),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(topLeft: Radius.elliptical(40,30),topRight: Radius.elliptical(40,30)),
+            color: Colors.green,
+          ),
+        ),
+      )
     );
   }
 }
